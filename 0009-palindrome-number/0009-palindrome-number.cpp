@@ -1,24 +1,13 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if (x < 0) return false;
-        vector<int> arr;
-
-        while (x > 0)
-        {
-            arr.push_back(x % 10);
-            x /= 10;
-        }
-
+        string s = std::to_string(x);
         int l = 0;
-        int r = arr.size() - 1;
-
-        while (true)
+        int r = s.size()-1;
+        while(l<=r)
         {
-            if (l > arr.size() || r < 0) break;
-            if (arr[l] != arr[r]) return false;
-            ++l;
-            --r;
+            if(s[l++]!=s[r--])
+                return false;
         }
         return true;
     }
